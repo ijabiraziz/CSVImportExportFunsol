@@ -1,0 +1,19 @@
+<!-- templates/csv_app/export_csv.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Export</title>
+</head>
+<body>
+
+    <h1>CSV Export</h1>
+
+    <!-- Form with a submit button to trigger CSV export -->
+    <form method="post" action="{% url 'export_csv' %}">
+        {% csrf_token %}
+        <button type="submit">Export CSV</button>
+    </form>
+
+</body>
+</html>

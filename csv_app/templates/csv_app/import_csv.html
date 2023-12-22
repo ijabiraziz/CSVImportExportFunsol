@@ -1,0 +1,27 @@
+<!-- csv_app/templates/csv_app/book_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Import CSV File</h1>
+
+    <!-- Import CSV Form -->
+    <form action="{% url 'import_csv' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" accept=".csv">
+        <button type="submit">Import from CSV</button>
+    </form>
+
+    <br><br>
+
+    <!-- Book List -->
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} by {{ book.author.name }} (Genres: {{ book.genres.all|join:", " }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
